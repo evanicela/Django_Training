@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Service
 
 
 # Create your views here.
@@ -16,5 +17,7 @@ def contact(request):
     return render(request, "contact.html")
 
 
-def service(request):
-    return render(request, "service.html")
+def service_list(request):
+    all_services = Service.objects.all()
+    context = {"all_services": all_services}
+    return render(request, 'service.html', context)
